@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.appplepi_project.R
-import com.example.appplepi_project.model.data.Weather
+import com.example.appplepi_project.model.data.WeatherRes
 
-class ViewPagerAdapter (private val list : ArrayList<Weather>) : PagerAdapter() {
+class ViewPagerAdapter (private val list : ArrayList<WeatherRes>) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(container.context)
         val view = inflater.inflate(R.layout.layout_weather, container, false)

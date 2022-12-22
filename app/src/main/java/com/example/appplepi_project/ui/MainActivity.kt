@@ -3,7 +3,7 @@ package com.example.appplepi_project.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.appplepi_project.databinding.ActivityMainBinding
-import com.example.appplepi_project.model.data.Weather
+import com.example.appplepi_project.model.data.WeatherRes
 import com.example.appplepi_project.model.remote.RetrofitService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
     companion object {
         val weatherList = arrayListOf(
             //예시 데이터 데이터 타입 : Weather
-            Weather("1", "1", "1", "1", "1","1"),
-            Weather("2", "1", "1", "1", "1","1"),
-            Weather("3", "1", "1", "1", "1","1")
+            WeatherRes("1", "1", "1", "1", "1","1"),
+            WeatherRes("2", "1", "1", "1", "1","1"),
+            WeatherRes("3", "1", "1", "1", "1","1")
         )
     }
 }
