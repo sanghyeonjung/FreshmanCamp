@@ -1,8 +1,10 @@
-package com.example.appplepi_project
+package com.example.appplepi_project.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.appplepi_project.databinding.ActivityMainBinding
+import com.example.appplepi_project.model.data.Weather
+import com.example.appplepi_project.model.remote.RetrofitService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

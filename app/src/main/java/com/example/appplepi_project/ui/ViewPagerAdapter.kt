@@ -1,10 +1,12 @@
-package com.example.appplepi_project
+package com.example.appplepi_project.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
+import com.example.appplepi_project.R
+import com.example.appplepi_project.model.data.Weather
 
 class ViewPagerAdapter (private val list : ArrayList<Weather>) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
