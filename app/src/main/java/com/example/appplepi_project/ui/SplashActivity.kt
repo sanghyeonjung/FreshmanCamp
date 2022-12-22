@@ -1,4 +1,3 @@
-
 package com.example.appplepi_project.ui
 
 import android.content.Intent
@@ -16,11 +15,11 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val splashImage : ImageView = findViewById(R.id.splash_image)
+        val splashImage: ImageView = findViewById(R.id.splash_image)
         Glide.with(this).load(R.raw.weather).into(splashImage)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent= Intent( this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
             finish()

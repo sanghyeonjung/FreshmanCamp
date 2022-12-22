@@ -8,7 +8,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.example.appplepi_project.R
 import com.example.appplepi_project.model.data.WeatherRes
 
-class ViewPagerAdapter (private val list : ArrayList<WeatherRes>) : PagerAdapter() {
+class ViewPagerAdapter(private val list: ArrayList<WeatherRes>) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(container.context)
         val view = inflater.inflate(R.layout.layout_weather, container, false)
@@ -17,6 +17,8 @@ class ViewPagerAdapter (private val list : ArrayList<WeatherRes>) : PagerAdapter
         view.findViewById<TextView>(R.id.tv_main_sunvalue).text = list[position].uv
         view.findViewById<TextView>(R.id.tv_main_rainvalue).text = list[position].rain
         view.findViewById<TextView>(R.id.tv_main_airtempvalue).text = list[position].temp
+        view.findViewById<TextView>(R.id.tv_first_news1).text = list[position].newsTitle
+        view.findViewById<TextView>(R.id.tv_second_news1).text = list[position].newsContent
         container.addView(view)
         return view
     }
@@ -24,6 +26,7 @@ class ViewPagerAdapter (private val list : ArrayList<WeatherRes>) : PagerAdapter
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
+
     override fun getCount(): Int = list.size
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

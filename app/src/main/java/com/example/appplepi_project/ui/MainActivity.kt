@@ -9,8 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var ViewPagerAdapter: ViewPagerAdapter
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +29,9 @@ class MainActivity : AppCompatActivity() {
     companion object {
         val weatherList = arrayListOf(
             //예시 데이터 데이터 타입 : Weather
-            WeatherRes("1", "1", "1", "1", "1","1"),
-            WeatherRes("2", "1", "1", "1", "1","1"),
-            WeatherRes("3", "1", "1", "1", "1","1")
+            WeatherRes("1", "1", "1", "1", "1", "기사 제목", "기사 내용"),
+            WeatherRes("2", "1", "1", "1", "1", "기사 제목", "기사 내용"),
+            WeatherRes("3", "1", "1", "1", "1", "기사 제목", "기사 내용")
         )
     }
 }
