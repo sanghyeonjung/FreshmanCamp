@@ -1,16 +1,31 @@
 package com.example.appplepi_project
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.viewpager.widget.PagerAdapter
 
-class ViewPagerAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
-    val fragments = mutableListOf<Fragment>()
+class ViewPagerAdapter (private val list : ArrayList<Weather>) : PagerAdapter() {
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val inflater = LayoutInflater.from(container.context)
+        val view = inflater.inflate(R.layout.layout_weather, container, false)
+        view.findViewById<TextView>(R.id.tv_main_humidityvalue).text = list[position].humidity
+        view.findViewById<TextView>(R.id.tv_main_finedustvalue).text = list[position].dust
+        view.findViewById<TextView>(R.id.tv_main_sunvalue).text = list[position].uv
+        view.findViewById<TextView>(R.id.tv_main_rainvalue).text = list[position].rain
+        view.findViewById<TextView>(R.id.tv_main_airtempvalue).text = list[position].temp
+        container.addView(view)
+        return view
+    }
 
-    //Adapter가 가지고 있는 data set 안에서의 전체 아이템 수 리턴
-    override fun getItemCount(): Int = fragments.size
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(`object` as View)
+    }
+    override fun getCount(): Int = list.size
 
-    //특정 포지션에 연결된 새로운 Fragment를 제공하는 기능을 가진 메소드
-    override fun createFragment(position: Int): Fragment = fragments[position]
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
+        return view == `object`
+    }
 
 }

@@ -2,15 +2,9 @@ package com.example.appplepi_project
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
-import com.example.appplepi_project.TodayFragment
-import com.example.appplepi_project.TomorrowFragment
-import com.example.appplepi_project.ViewPagerAdapter
-import com.example.appplepi_project.YesterdayFragment
 import com.example.appplepi_project.databinding.ActivityMainBinding
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var ViewPagerAdapter: ViewPagerAdapter
@@ -19,28 +13,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
-
-        //mpager.(ViewPagerAdapter)
-
-        initAdapter()
         setContentView(binding.root)
+        binding.vpSample.adapter = ViewPagerAdapter(weatherList)
+
+
+        val retrofit = Retrofit
+            .Builder()
+            .baseUrl("http://api.openweathermap.org/data/2.5/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(RetrofitService::class.java)
     }
 
-    private fun initAdapter() {
-        //Adapter 안에 ViewPager2 상에 띄워줄 fragmentList 생성
-        val fragmentList = listOf( TodayFragment(),TomorrowFragment(), YesterdayFragment())
-        //val mpager : ViewPager2 = findViewById(R.id.vp_sample)
-        //mpager.setCurrentItem()
-
-
-        //ViewPagerAdapter 초기화
-
-        ViewPagerAdapter = ViewPagerAdapter(this)
-        ViewPagerAdapter.fragments.addAll(fragmentList)
-
-
-        //ViewPager2와 Adapter 연동
-        binding.vpSample.adapter = ViewPagerAdapter
+    companion object {
+        val weatherList = arrayListOf(
+            //예시 데이터 데이터 타입 : Weather
+            Weather("1", "1", "1", "1", "1","1"),
+            Weather("2", "1", "1", "1", "1","1"),
+            Weather("3", "1", "1", "1", "1","1")
+        )
     }
 }
