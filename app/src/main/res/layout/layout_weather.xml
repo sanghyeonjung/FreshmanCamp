@@ -14,7 +14,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_main_todayweather"
+            android:id="@+id/cl_main_weather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="100dp"
@@ -63,7 +63,7 @@
                 app:layout_constraintTop_toBottomOf="@id/message" />
 
             <TextView
-                android:id="@+id/tv_main_todayweather"
+                android:id="@+id/tv_main_weather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -83,9 +83,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:background="@drawable/custom_weather_button"
-                app:layout_constraintEnd_toStartOf="@+id/cl_main_finedust"
+                app:layout_constraintEnd_toStartOf="@+id/cl_main_PM10"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_main_todayweather">
+                app:layout_constraintTop_toBottomOf="@id/tv_main_weather">
 
                 <ImageView
                     android:id="@+id/iv_main_humidity"
@@ -128,7 +128,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_main_finedust"
+                android:id="@+id/cl_main_PM10"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="4dp"
@@ -137,10 +137,10 @@
                 android:background="@drawable/custom_weather_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cl_main_humidity"
-                app:layout_constraintTop_toBottomOf="@id/tv_main_todayweather">
+                app:layout_constraintTop_toBottomOf="@id/tv_main_weather">
 
                 <ImageView
-                    android:id="@+id/iv_main_finedust"
+                    android:id="@+id/iv_main_PM10"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -151,7 +151,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_main_finedust"
+                    android:id="@+id/tv_main_PM10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -159,11 +159,11 @@
                     android:text="미세먼지"
                     android:textColor="#1D1D1D"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_finedust"
-                    app:layout_constraintTop_toTopOf="@id/iv_main_finedust" />
+                    app:layout_constraintStart_toEndOf="@id/iv_main_PM10"
+                    app:layout_constraintTop_toTopOf="@id/iv_main_PM10" />
 
                 <TextView
-                    android:id="@+id/tv_main_finedustvalue"
+                    android:id="@+id/tv_main_PM10value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -172,13 +172,13 @@
                     android:text="보통"
                     android:textColor="#313040"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_finedust"
-                    app:layout_constraintTop_toBottomOf="@id/tv_main_finedust" />
+                    app:layout_constraintStart_toEndOf="@id/iv_main_PM10"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_PM10" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_main_sun"
+                android:id="@+id/cl_main_PM2_5"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="24dp"
@@ -190,7 +190,7 @@
                 app:layout_constraintTop_toBottomOf="@id/cl_main_humidity">
 
                 <ImageView
-                    android:id="@+id/iv_main_sun"
+                    android:id="@+id/iv_main_PM2_5"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -201,19 +201,19 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_main_sun"
+                    android:id="@+id/tv_main_PM2_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/pretendardsemibold"
-                    android:text="자외선 지수"
+                    android:text="초 미세먼지"
                     android:textColor="#1D1D1D"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_sun"
-                    app:layout_constraintTop_toTopOf="@id/iv_main_sun" />
+                    app:layout_constraintStart_toEndOf="@id/iv_main_PM2_5"
+                    app:layout_constraintTop_toTopOf="@id/iv_main_PM2_5" />
 
                 <TextView
-                    android:id="@+id/tv_main_sunvalue"
+                    android:id="@+id/tv_main_PM2_5value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -222,8 +222,8 @@
                     android:text="낮음"
                     android:textColor="#313040"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_sun"
-                    app:layout_constraintTop_toBottomOf="@id/tv_main_sun" />
+                    app:layout_constraintStart_toEndOf="@id/iv_main_PM2_5"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_PM2_5" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -236,8 +236,8 @@
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/custom_weather_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cl_main_sun"
-                app:layout_constraintTop_toBottomOf="@id/cl_main_finedust">
+                app:layout_constraintStart_toEndOf="@id/cl_main_PM2_5"
+                app:layout_constraintTop_toBottomOf="@id/cl_main_PM10">
 
                 <ImageView
                     android:id="@+id/iv_main_rain"
@@ -277,7 +277,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_main_airtemp"
+                android:id="@+id/cl_main_temp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="24dp"
@@ -286,10 +286,10 @@
                 android:background="@drawable/custom_weather_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_main_sun">
+                app:layout_constraintTop_toBottomOf="@id/cl_main_PM2_5">
 
                 <ImageView
-                    android:id="@+id/iv_main_airtemp"
+                    android:id="@+id/iv_main_temp"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -300,7 +300,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_main_airtemp"
+                    android:id="@+id/tv_main_temp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -308,11 +308,11 @@
                     android:text="기온"
                     android:textColor="#1D1D1D"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_airtemp"
-                    app:layout_constraintTop_toTopOf="@id/iv_main_airtemp" />
+                    app:layout_constraintStart_toEndOf="@id/iv_main_temp"
+                    app:layout_constraintTop_toTopOf="@id/iv_main_temp" />
 
                 <TextView
-                    android:id="@+id/tv_main_airtempvalue"
+                    android:id="@+id/tv_main_tempvalue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -321,8 +321,8 @@
                     android:text="최고 : 35도 최저 : -12도 평균 : 3도"
                     android:textColor="#313040"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_airtemp"
-                    app:layout_constraintTop_toBottomOf="@id/tv_main_airtemp" />
+                    app:layout_constraintStart_toEndOf="@id/iv_main_temp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_temp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -337,11 +337,11 @@
                 android:textColor="#1D1D1D"
                 android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_main_airtemp" />
+                app:layout_constraintTop_toBottomOf="@id/cl_main_temp" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_news1"
+                android:id="@+id/cl_main_news"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="24dp"
@@ -353,7 +353,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_main_todaynews">
 
                 <TextView
-                    android:id="@+id/tv_first_news1"
+                    android:id="@+id/tv_main_newsTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -367,7 +367,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_second_news1"
+                    android:id="@+id/tv_main_newsContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -381,7 +381,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/ib_new1"
+                    android:id="@+id/ib_main_news"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
