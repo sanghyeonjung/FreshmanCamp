@@ -18,5 +18,5 @@ data class WeatherRes (
         @SerializedName("newsContent")
         val newsContent : String, // 뉴스내용
         @SerializedName("dt")
-        val dt : Int // 어제, 오늘, 내일
+        val dt : Int // 날짜
 )

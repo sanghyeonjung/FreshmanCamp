@@ -343,53 +343,44 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_main_news"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/custom_weather_button"
+                android:minHeight="80dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_main_todaynews">
 
                 <TextView
                     android:id="@+id/tv_main_newsTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="20dp"
                     android:fontFamily="@font/pretendardbold"
                     android:text="누그러진 추위…곳곳 건조특보, 화재 유의"
                     android:textColor="#313040"
                     android:textSize="17sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_main_newsContent"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/pretendardbold"
                     android:text="누그러진 추위…곳곳 건조특보, 화재 유의"
                     android:textColor="#505050"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/ib_main_news"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_newsTitle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

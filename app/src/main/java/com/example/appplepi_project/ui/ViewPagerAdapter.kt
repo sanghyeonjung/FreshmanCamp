@@ -25,13 +25,14 @@ class ViewPagerAdapter(private val list: ArrayList<WeatherRes>) : PagerAdapter()
         val dateText = view.findViewById<TextView>(R.id.tv_main_weather) // 오늘/내일/어제 날씨
         val dateNum = view.findViewById<TextView>(R.id.tv_main_date) // 날짜
 
-        humidity.text = list[position].humidity
-        PM10.text = list[position].PM10
-        PM2_5.text = list[position].PM2_5
-        rain.text = list[position].rain
-        temp.text = list[position].temp
+        humidity.text = list[position].humidity + "%"
+        PM10.text = list[position].PM10 + "㎍/m³"
+        PM2_5.text = list[position].PM2_5 + "㎍/m³"
+        rain.text = list[position].rain + "%"
+        temp.text = list[position].temp + "도"
         newsTitle.text = list[position].newsTitle
-        newsContent.text = list[position].newsContent
+        //.을 기준으로 뉴스 내용을 나눠서 0번째 인덱스
+        newsContent.text = list[position].newsContent.split(".")[0]
 
         if(list[position].dt == -1 )
             dateText.text = "어제 날씨"

@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val retrofit = Retrofit
             .Builder()
             .baseUrl(BaseUrl)
@@ -30,6 +31,61 @@ class MainActivity : AppCompatActivity() {
             .build()
         val service = retrofit.create(RetrofitService::class.java)
 
+        var weatherList = ArrayList<WeatherRes>()
+        service.getWeather(-1)?.enqueue(object : Callback<WeatherRes> {
+            override fun onResponse(call: Call<WeatherRes>, response: Response<WeatherRes>) {
+                if (response.isSuccessful) {
+                    val result: WeatherRes? = response.body()
+                    yesterdayData = WeatherRes(
+                        result!!.humidity,
+                        result.PM10,
+                        result.PM2_5,
+                        result.rain,
+                        result.temp,
+                        result.newsTitle,
+                        result.newsContent,
+                        result.dt
+                    )
+                    weatherList.add(yesterdayData)
+                    binding.vpSample.adapter = ViewPagerAdapter(weatherList)
+                    Log.d("GetWeatherData", result.toString())
+                } else {
+                    Log.d("GetWeatherData", "onResponse 실패")
+                }
+            }
+
+            override fun onFailure(call: Call<WeatherRes>, t: Throwable) {
+                Log.d("GetWeatherData", "onFailure 에러 : " + t.message.toString())
+            }
+
+        })
+        service.getWeather(1)?.enqueue(object : Callback<WeatherRes> {
+            override fun onResponse(call: Call<WeatherRes>, response: Response<WeatherRes>) {
+                if (response.isSuccessful) {
+                    val result: WeatherRes? = response.body()
+                    tomorrowData = WeatherRes(
+                        result!!.humidity,
+                        result.PM10,
+                        result.PM2_5,
+                        result.rain,
+                        result.temp,
+                        result.newsTitle,
+                        result.newsContent,
+                        result.dt
+                    )
+                    weatherList.add(tomorrowData)
+                    binding.vpSample.adapter = ViewPagerAdapter(weatherList)
+                    Log.d("GetWeatherData", result.toString())
+                } else {
+                    Log.d("GetWeatherData", "onResponse 실패")
+                }
+            }
+
+            override fun onFailure(call: Call<WeatherRes>, t: Throwable) {
+                Log.d("GetWeatherData", "onFailure 에러 : " + t.message.toString())
+            }
+
+        })
         service.getWeather(0)?.enqueue(object : Callback<WeatherRes> {
             override fun onResponse(call: Call<WeatherRes>, response: Response<WeatherRes>) {
                 if (response.isSuccessful) {
@@ -44,29 +100,11 @@ class MainActivity : AppCompatActivity() {
                         result.newsContent,
                         result.dt
                     )
-                    yesterdayData = WeatherRes(
-                        result!!.humidity,
-                        result.PM10,
-                        result.PM2_5,
-                        result.rain,
-                        result.temp,
-                        result.newsTitle,
-                        result.newsContent,
-                        result.dt
-                    )
-                    tomorrowData = WeatherRes(
-                        result!!.humidity,
-                        result.PM10,
-                        result.PM2_5,
-                        result.rain,
-                        result.temp,
-                        result.newsTitle,
-                        result.newsContent,
-                        result.dt
-                    )
+                    weatherList.add(todayData)
+                    binding.vpSample.adapter = ViewPagerAdapter(weatherList)
                     Log.d("GetWeatherData", result.toString())
                 } else {
-                    Log.d("GetWeatherData", "onResponse 실패")
+                    Log.d("GetWeatherData", "onResponse 실패" + response.code())
                 }
             }
 
@@ -75,21 +113,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
-        val weatherList = arrayListOf(
-            //예시 데이터 데이터 타입 : Weather
-            yesterdayData,
-            todayData,
-            tomorrowData
-//            WeatherRes("1", "1", "1", "1", "1", "기사 제목", "기사 내용", -1),
-//            WeatherRes("2", "1", "1", "1", "1", "기사 제목", "기사 내용", 0),
-//            WeatherRes("3", "1", "1", "1", "1", "기사 제목", "기사 내용", 1)
-        )
-
-        binding.vpSample.adapter = ViewPagerAdapter(weatherList)
     }
 
+
     companion object {
-        const val BaseUrl = ""
+        const val BaseUrl = "http://18.176.54.100"
     }
 }
