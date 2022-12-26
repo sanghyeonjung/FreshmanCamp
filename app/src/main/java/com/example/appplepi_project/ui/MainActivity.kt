@@ -1,8 +1,13 @@
 package com.example.appplepi_project.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.appplepi_project.R
 import com.example.appplepi_project.databinding.ActivityMainBinding
 import com.example.appplepi_project.model.data.WeatherRes
 import com.example.appplepi_project.model.remote.RetrofitService
@@ -11,6 +16,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -19,10 +29,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tomorrowData: WeatherRes
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         val retrofit = Retrofit
             .Builder()
@@ -31,9 +41,10 @@ class MainActivity : AppCompatActivity() {
             .build()
         val service = retrofit.create(RetrofitService::class.java)
 
-        var weatherList = ArrayList<WeatherRes>()
-        service.getWeather(-1)?.enqueue(object : Callback<WeatherRes> {
+        val weatherList = ArrayList<WeatherRes>()
+        service.getWeather(-1).enqueue(object : Callback<WeatherRes> {
             override fun onResponse(call: Call<WeatherRes>, response: Response<WeatherRes>) {
+
                 if (response.isSuccessful) {
                     val result: WeatherRes? = response.body()
                     yesterdayData = WeatherRes(
@@ -44,7 +55,8 @@ class MainActivity : AppCompatActivity() {
                         result.temp,
                         result.newsTitle,
                         result.newsContent,
-                        result.dt
+                        result.dt,
+                        -1
                     )
                     weatherList.add(yesterdayData)
                     binding.vpSample.adapter = ViewPagerAdapter(weatherList)
@@ -71,7 +83,8 @@ class MainActivity : AppCompatActivity() {
                         result.temp,
                         result.newsTitle,
                         result.newsContent,
-                        result.dt
+                        result.dt,
+                        1
                     )
                     weatherList.add(tomorrowData)
                     binding.vpSample.adapter = ViewPagerAdapter(weatherList)
@@ -98,7 +111,8 @@ class MainActivity : AppCompatActivity() {
                         result.temp,
                         result.newsTitle,
                         result.newsContent,
-                        result.dt
+                        result.dt,
+                        0
                     )
                     weatherList.add(todayData)
                     binding.vpSample.adapter = ViewPagerAdapter(weatherList)

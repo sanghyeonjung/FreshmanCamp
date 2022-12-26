@@ -145,7 +145,7 @@
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
                     android:background="#F2F2F2"
-                    android:src="@drawable/dust_image1"
+                    android:src="@drawable/finedust"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -195,7 +195,7 @@
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
                     android:background="#F2F2F2"
-                    android:src="@drawable/sun_image1"
+                    android:src="@drawable/veryfinedust"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
